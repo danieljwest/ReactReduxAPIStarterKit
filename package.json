@@ -8,29 +8,32 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist && rimraf apidist",
     "compile": "better-npm-run compile",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
     "start": "better-npm-run start",
+    "start:api": "better-npm-run start:api",
+    "start:apilint": "eslint api && babel-node api/start.js",
     "dev": "better-npm-run dev",
     "dev:nw": "npm run dev -- --nw",
     "dev:no-debug": "npm run dev -- --no_debug",
     "test": "better-npm-run test",
     "test:dev": "npm run test -- --watch",
+    "serve": "node apidist/start.js",
     "deploy": "better-npm-run deploy",
     "flow:check": "babel-node bin/flow-check",
     "codecov": "cat coverage/*/lcov.info | codecov"
   },
   "betterScripts": {
     "compile": {
-      "command": "babel-node bin/compile",
+      "command": "babel-node bin/compile && babel api -d apidist",
       "env": {
         "DEBUG": "app:*"
       }
     },
-    "dev": {
-      "command": "nodemon --exec babel-node bin/server",
+    "start:api": {
+      "command": "nodemon --watch api --exec 'npm run start:apilint'",
       "env": {
         "NODE_ENV": "development",
         "DEBUG": "app:*"
@@ -64,13 +67,17 @@
   "author": "David Zukowski <david@zuko.me> (http://zuko.me)",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.0",
     "debug": "^2.2.0",
+    "express": "^4.13.4",
     "history": "^2.0.0",
+    "jsonwebtoken": "^5.7.0",
     "koa": "^2.0.0-alpha.3",
     "koa-connect-history-api-fallback": "^0.3.0",
     "koa-convert": "^1.2.0",
     "koa-proxy": "^0.5.0",
     "koa-static": "^2.0.0",
+    "morgan": "^1.7.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^4.0.0",
@@ -80,7 +87,7 @@
     "redux-thunk": "^2.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.5.1",
+    "babel-cli": "^6.6.5",
     "babel-core": "^6.3.17",
     "babel-eslint": "^6.0.0-beta.6",
     "babel-loader": "^6.2.0",

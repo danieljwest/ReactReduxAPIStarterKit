@@ -13,7 +13,7 @@ export default function (router) {
             let token = jwt.sign(user.dataValues, config.api_secret, {
               expiresIn: 60 * 60
             })
-            return res.json({success: true, token})
+            return res.json({success: true, username: user.username, token})
           }
           return res.json({success: false, message: 'Authentication Failed!'})
         })

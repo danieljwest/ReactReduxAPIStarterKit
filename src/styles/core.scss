@@ -1,6 +1,6 @@
 :global {
   @import 'base';
-  @import 'vendor/normalize';
+  // @import 'vendor/normalize';
 
   // Some best-practice CSS that's useful for most apps
   // Just remove them if they're not what you want
@@ -20,4 +20,17 @@
   *:after {
     box-sizing: inherit;
   }
+
+  .form-signin {
+    max-width: 450px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+  }
+
+  .form-signin
+    input {
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
 }

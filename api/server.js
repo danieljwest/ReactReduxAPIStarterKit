@@ -6,6 +6,9 @@ import config from './config'
 import morgan from 'morgan'
 import _debug from 'debug'
 import authMiddleware from './middleware/authMiddleware'
+import models from './models'
+import db from './core/database'
+import userService from './services/userService'
 
 const execute = () => {
   let app = express()
@@ -40,8 +43,19 @@ const execute = () => {
   app.use('/api', unprotected)
   app.use('/api/secured', protectedRouter)
 
-  app.listen(port, host)
-  debug(`API started on ${host}:${port}`)
+  // Load up models
+  let obj
+  for (let model in models) {
+    debug(`Loading model: ${model}`)
+    obj = models[model](db)
+    db[model] = obj
+  }
+  debug('Syncing to the database')
+  db.sync({force: true}).then(() => {
+    userService.add('admin', '1234', true)
+    app.listen(port, host)
+    debug(`API started on ${host}:${port}`)
+  })
 }
 
 export default execute

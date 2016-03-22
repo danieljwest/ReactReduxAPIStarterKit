@@ -3,7 +3,8 @@ import { argv } from 'yargs'
 const config = {
   env : process.env.NODE_ENV || 'development',
   api_host : 'localhost',
-  api_port : process.env.APIPORT || 8081
+  api_port : process.env.APIPORT || 8081,
+  api_secret : 'developmentsecretkey'
 }
 
 config.globals = {
@@ -20,4 +21,3 @@ config.globals = {
 }
 
 export default config
-  

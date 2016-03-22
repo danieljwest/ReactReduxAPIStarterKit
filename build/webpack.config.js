@@ -15,7 +15,7 @@ const webpackConfig = {
   target: 'web',
   devtool: config.compiler_devtool,
   resolve: {
-    root: paths.base(config.dir_client),
+    root: [paths.base(config.dir_client), paths.base('api')],
     extensions: ['', '.js', '.jsx', '.json']
   },
   module: {}

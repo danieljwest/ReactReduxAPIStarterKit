@@ -37,7 +37,7 @@ Requirements
 
 Features
 --------
-
+* [ExpressJS](http://expressjs.com)
 * [React](https://github.com/facebook/react) (`^0.14.0`)
 * [Redux](https://github.com/rackt/redux) (`^3.0.0`)
   * react-redux (`^4.0.0`)
@@ -69,41 +69,20 @@ Getting Started
 Just clone the repo and install the necessary node modules:
 
 ```shell
-$ git clone https://github.com/davezuko/react-redux-starter-kit.git
-$ cd react-redux-starter-kit
+$ git clone https://github.com/danieljwest/ReactReduxAPIStarterKit.git
+$ cd ReactReduxAPIStarterKit
 $ npm install                   # Install Node modules listed in ./package.json (may take a while the first time)
 $ npm start                     # Compile and launch
+$ npm start:api                 # Compile and launch the api
 ```
 
-### Starting a New Project
-
-First, I highly suggest checking out a new project by
-[SpencerCDixon](https://github.com/SpencerCDixon):
-[redux-cli](https://github.com/SpencerCDixon/redux-cli). This tool integrates
-extremely well with this project and offers added benefits such as generators
-(components, redux modules, etc.) and config/template management. It's still a
-work in progress, but give it a shot and file bugs to help make the project more
-robust.
-
-Alternatively, if you just want to stick with this project and want to start a fresh project without having to clean up the example code in `master`, you can do the following after cloning the repo:
-
-```shell
-git fetch origin new-project                      # Make sure you've fetched the latest copy of this branch from remote
-git checkout new-project                          # Checkout the new-project branch
-$ rm -rf .git && git init                         # Start a new git repository
-```
-
-Great, you now have a fresh project! There are a few titles you'll probably want to update, and then you're good to go:
-
-* `~/package.json` - package name
-* `~/src/index.html` - template title tag
 
 Usage
 -----
 
 Before delving into the descriptions of each available npm script, here's a brief summary of the three which will most likely be your bread and butter:
 
-* Doing live development? Use `npm start` to spin up the dev server.
+* Doing live development? Use `npm start` to spin up the dev server webui and `npm start:api` to spin up the api
 * Compiling the application to disk? Use `npm run compile`.
 * Deploying to an environment? `npm run deploy` can help with that.
 

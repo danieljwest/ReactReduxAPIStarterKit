@@ -34,3 +34,4 @@ const testsToRun = testsContext.keys().filter(inManifest)
 const componentsContext = require.context('../src/', true, /^((?!main).)*\.js$/)
 
 componentsContext.keys().forEach(componentsContext)
+

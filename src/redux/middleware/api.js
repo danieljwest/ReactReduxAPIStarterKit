@@ -18,7 +18,7 @@ function callApi (endpoint, dispatch, method, contentType, body, token) {
 
   // Without this certain OPTIONS CORS checks will fail since the server will reject this header for some reason.
   if (token) {
-    requestMeta.headers.xAccessToken = token
+    requestMeta.headers['x-access-token'] = token
   }
 
   if (body) {

@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { routeActions } from 'react-router-redux'
+import { push } from 'react-router-redux'
 import { logout, loginExpired } from 'redux/modules/auth'
 import { showLogin } from 'redux/modules/login'
 import Navbar from 'react-bootstrap/lib/Navbar'
@@ -19,7 +19,7 @@ export const handleSelect = function (event, actionKey) {
   return (dispatch, getState) => {
     if (typeof actionKey === 'string') {
       // Route path
-      dispatch(routeActions.push(actionKey))
+      dispatch(push(actionKey))
     } else {
       // Action
       dispatch(actionKey)
